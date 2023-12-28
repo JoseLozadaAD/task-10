@@ -1,41 +1,76 @@
+import { Dispatch } from 'redux';
+import {
+  add,
+  changeValue,
+  deleteAction,
+  divide,
+  multiply,
+  reset,
+  setOperation,
+  subtract,
+} from '../store/calculatorSlice';
+
 const useCalculator = (
-  setValue: React.Dispatch<React.SetStateAction<string>>
+  dispatch: Dispatch,
+  currentValue: string,
+  currentOperation: string
 ) => {
   const handleDelete = () => {
-    setValue((currentValue) => {
-      if (currentValue.length === 1) {
-        return '0';
-      }
+    if (currentValue.length === 1) {
+      return dispatch(deleteAction('0'));
+    }
 
-      return currentValue.slice(0, -1);
-    });
+    return dispatch(deleteAction(currentValue.slice(0, -1)));
   };
 
   const handleInput = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setValue((currentValue) => {
-      if (
-        currentValue === '0' &&
-        (e.target as HTMLButtonElement).textContent !== '.'
-      ) {
-        return (e.target as HTMLButtonElement).textContent || '';
+    const value = (e.target as HTMLButtonElement).textContent || '';
+
+    if (
+      currentValue.includes('.') &&
+      (e.target as HTMLButtonElement).textContent === '.'
+    ) {
+      return;
+    }
+
+    dispatch(changeValue(value));
+    return;
+  };
+
+  const handleOperation = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const operation = (e.target as HTMLButtonElement).textContent || '';
+
+    if (currentOperation === '') {
+      dispatch(setOperation(operation));
+      dispatch(reset());
+    } else {
+      switch (currentOperation) {
+        case '+':
+          dispatch(add());
+          break;
+        case '-':
+          dispatch(subtract());
+          break;
+        case '*':
+          dispatch(multiply());
+          break;
+        case '/':
+          dispatch(divide());
+          break;
+        default:
+          break;
       }
 
-      if (
-        currentValue.includes('.') &&
-        (e.target as HTMLButtonElement).textContent === '.'
-      ) {
-        return currentValue;
-      }
-
-      return currentValue.concat(
-        (e.target as HTMLButtonElement).textContent || ''
-      );
-    });
+      dispatch(setOperation(operation));
+    }
   };
 
   return {
     handleDelete,
     handleInput,
+    handleOperation,
   };
 };
 

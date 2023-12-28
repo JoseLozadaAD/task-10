@@ -9,6 +9,7 @@ import { calcBodyStyle } from '../styles/styles';
 const CalculatorBody = ({
   onHandleDelete,
   onHandleInput,
+  onHandleOperation,
 }: CalculatorBodyInterface) => {
   return (
     <Grid container padding={4} sx={calcBodyStyle}>
@@ -28,7 +29,7 @@ const CalculatorBody = ({
             color="#cecece"
             textContent="/"
             space={4}
-            onHandleEvent={() => {}}
+            onHandleEvent={onHandleOperation}
           />
         </Grid>
       </Grid>
@@ -45,21 +46,21 @@ const CalculatorBody = ({
             color="#cecece"
             textContent="+"
             space={12}
-            onHandleEvent={() => {}}
+            onHandleEvent={onHandleOperation}
           />
 
           <CalculatorButton
             color="#cecece"
             textContent="-"
             space={12}
-            onHandleEvent={() => {}}
+            onHandleEvent={onHandleOperation}
           />
 
           <CalculatorButton
             color="#cecece"
             textContent="*"
             space={12}
-            onHandleEvent={() => {}}
+            onHandleEvent={onHandleOperation}
           />
         </Grid>
       </Grid>
