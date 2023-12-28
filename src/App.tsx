@@ -11,9 +11,8 @@ import { calcStyle } from './styles/styles';
 
 const App = () => {
   const dispatch = useDispatch();
-  const value = useSelector((state: RootState) => state.calculator.value);
-  const operation = useSelector(
-    (state: RootState) => state.calculator.operation
+  const { value, operation, flag } = useSelector(
+    (state: RootState) => state.calculator
   );
   const {
     handleDelete,
@@ -21,7 +20,7 @@ const App = () => {
     handleOperation,
     handleReset,
     handleResult,
-  } = useCalculator(dispatch, value, operation);
+  } = useCalculator(dispatch, value, operation, flag);
 
   return (
     <Grid container direction="row" rowSpacing={4} maxWidth="md" sx={calcStyle}>

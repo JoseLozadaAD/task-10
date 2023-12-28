@@ -35,6 +35,7 @@ const CalculatorBody = ({
           />
         </Grid>
       </Grid>
+
       <Grid item xs={3}>
         <Grid container rowSpacing={2} marginLeft={3} paddingRight={3}>
           <CalculatorButton
@@ -66,15 +67,16 @@ const CalculatorBody = ({
           />
         </Grid>
       </Grid>
+
       <Grid container rowSpacing={2} columnSpacing={3} paddingTop={4}>
         <CalculatorButton
-          color="#cecece"
+          color="#ff5050"
           textContent="reset"
           space={6}
           onHandleEvent={onHandleReset}
         />
         <CalculatorButton
-          color="#cecece"
+          color="#6270ef"
           textContent="="
           space={6}
           onHandleEvent={onHandleResult}

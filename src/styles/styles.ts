@@ -9,6 +9,7 @@ export const calcInputStyle = {
   backgroundColor: '#273a2d',
   borderRadius: '10px',
   overflow: 'hidden',
+  boxShadow: 'inset 0 0 2rem rgba(0, 0, 0, 0.5)',
   input: {
     fontSize: '3rem',
     textAlign: 'right',
@@ -18,6 +19,7 @@ export const calcInputStyle = {
 };
 
 export const calcBodyStyle = {
+  boxShadow: 'inset 0 0 2rem rgba(0, 0, 0, 0.5)',
   backgroundColor: '#273a2d',
   borderRadius: '10px',
   marginTop: 4,
