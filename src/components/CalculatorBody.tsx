@@ -10,6 +10,8 @@ const CalculatorBody = ({
   onHandleDelete,
   onHandleInput,
   onHandleOperation,
+  onHandleReset,
+  onHandleResult,
 }: CalculatorBodyInterface) => {
   return (
     <Grid container padding={4} sx={calcBodyStyle}>
@@ -63,6 +65,20 @@ const CalculatorBody = ({
             onHandleEvent={onHandleOperation}
           />
         </Grid>
+      </Grid>
+      <Grid container rowSpacing={2} columnSpacing={3} paddingTop={4}>
+        <CalculatorButton
+          color="#cecece"
+          textContent="reset"
+          space={6}
+          onHandleEvent={onHandleReset}
+        />
+        <CalculatorButton
+          color="#cecece"
+          textContent="="
+          space={6}
+          onHandleEvent={onHandleResult}
+        />
       </Grid>
     </Grid>
   );

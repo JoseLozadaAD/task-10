@@ -15,11 +15,13 @@ const App = () => {
   const operation = useSelector(
     (state: RootState) => state.calculator.operation
   );
-  const { handleDelete, handleInput, handleOperation } = useCalculator(
-    dispatch,
-    value,
-    operation
-  );
+  const {
+    handleDelete,
+    handleInput,
+    handleOperation,
+    handleReset,
+    handleResult,
+  } = useCalculator(dispatch, value, operation);
 
   return (
     <Grid container direction="row" rowSpacing={4} maxWidth="md" sx={calcStyle}>
@@ -29,6 +31,8 @@ const App = () => {
         onHandleDelete={handleDelete}
         onHandleInput={handleInput}
         onHandleOperation={handleOperation}
+        onHandleReset={handleReset}
+        onHandleResult={handleResult}
       />
     </Grid>
   );

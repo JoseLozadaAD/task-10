@@ -4,6 +4,8 @@ export type CalculatorBodyInterface = {
   onHandleDelete: () => void;
   onHandleInput: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onHandleOperation: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onHandleReset: () => void;
+  onHandleResult: () => void;
 };
 
 export type CalculatorButtonInterface = {

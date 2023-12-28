@@ -67,10 +67,35 @@ const useCalculator = (
     }
   };
 
+  const handleReset = () => {
+    dispatch(reset());
+  };
+
+  const handleResult = () => {
+    switch (currentOperation) {
+      case '+':
+        dispatch(add());
+        break;
+      case '-':
+        dispatch(subtract());
+        break;
+      case '*':
+        dispatch(multiply());
+        break;
+      case '/':
+        dispatch(divide());
+        break;
+      default:
+        break;
+    }
+  };
+
   return {
     handleDelete,
     handleInput,
     handleOperation,
+    handleReset,
+    handleResult,
   };
 };
 
